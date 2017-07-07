@@ -1,5 +1,12 @@
 #! /bin/sh
 
+#Check that build-essential is installed
+check=`dpkg -s tree 2>&1 | grep "is not installed"`
+if [ -n "$check" ]; then
+    echo "Installing tree"
+    sudo apt install tree
+fi
+
 export PATH=~/git/testOpenEmbedded/bitbake/bin:$PATH
 cd bitbake/
 tree -L 2
